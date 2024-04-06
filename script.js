@@ -10,6 +10,9 @@ const border = '1px solid ';
 const labelForDay = document.querySelector(`label[for="${dayInput.id}"]`);
 const labelForYear = document.querySelector(`label[for="${yearInput.id}"]`);
 const labelForMonth = document.querySelector(`label[for="${monthInput.id}"]`);
+const calculatedYears = document.getElementById(`calculatedYears`);
+const calculatedMonths = document.getElementById(`calculatedMonths`);
+const calculatedDays = document.getElementById(`calculatedDays`);
 
 function changeColor(inputs, labels, color) {
     inputs.forEach(input => {
@@ -81,15 +84,39 @@ function isDateValid(dateStr) {
     return isFinite(new Date(dateStr));
   }
 
+function animate(ageNumbers) {
+    ageNumbers.forEach(number => {
+        number.classList.remove('animation'); // Remove animation class
+        void number.offsetWidth; // Trigger reflow to restart the animation
+        number.classList.add('animation'); // Reapply animation class
+      });
+}
+
 button.addEventListener('click', () => {
     const isValid = validateInput(dayInput, 1, 31) && validateInput(monthInput, 1, 12) && validateInput(yearInput, 1, 2024);
     const fullDate = `${yearInput.value}-${monthInput.value}-${dayInput.value}`;
-    let date = moment(fullDate, 'YYYY-MM-DD');
-
-    isDateValid = date.isValid();
+    let startDate = moment(fullDate, 'YYYY-MM-DD');
+    let endDate = moment();
+    isDateValid = startDate.isValid();
 
     if (isValid && isDateValid) {
-        alert('All inputs are valid and not empty');
+
+        // Calculate the difference in months
+        const diffMonthsTotal = endDate.diff(startDate, 'months');
+
+        // Calculate the remaining months and days
+        const diffYears = Math.floor(diffMonthsTotal / 12);
+        const remainingMonths = diffMonthsTotal % 12;
+        const diffDays = endDate.diff(startDate.add(diffYears, 'years').add(remainingMonths, 'months'), 'days');
+
+        animate([calculatedDays, calculatedMonths, calculatedYears])
+
+        calculatedDays.innerHTML = diffDays;
+        calculatedMonths.innerHTML = remainingMonths;
+        calculatedYears.innerHTML = diffYears;
+
+
+
     } else if (!isValid) {
         if (!validateInput(dayInput, 1, 31)) {
             createErrorMessage(dayInput, 'This field is required');

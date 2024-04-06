@@ -161,3 +161,19 @@ img {
     font-weight: 800;
     padding: 10px 0 10px 0;
 }
+
+@keyframes animation {
+    from {
+      opacity: 0; /* Start from opacity 0 */
+      transform: translateY(-10px); /* Start from slightly above */
+    }
+    to {
+      opacity: 1; /* End at full opacity */
+      transform: translateY(0); /* End at original position */
+    }
+  }
+  
+  .animation {
+    animation: animation 0.5s ease-in-out forwards; /* Apply animation */
+  }
+  
