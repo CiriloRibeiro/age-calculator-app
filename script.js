@@ -8,8 +8,8 @@ const warningColor = 'hsl(0, 100%, 67%)';
 const regularColor = 'hsl(0, 1%, 44%)';
 const border = '1px solid ';
 const labelForDay = document.querySelector(`label[for="${dayInput.id}"]`);
-const labelForYear = document.querySelector(`label[for="${monthInput.id}"]`);
-const labelForMonth = document.querySelector(`label[for="${yearInput.id}"]`);
+const labelForYear = document.querySelector(`label[for="${yearInput.id}"]`);
+const labelForMonth = document.querySelector(`label[for="${monthInput.id}"]`);
 
 function changeColor(inputs, labels, color) {
     inputs.forEach(input => {
@@ -28,7 +28,7 @@ function validateInput(input, min, max) {
         changeColor([input], [labelForInput], warningColor);
         return false; // Invalid input
     } else {
-        changeColor([input], [labelForInput], regularColor);
+        // changeColor([input], [labelForInput], regularColor);
         return true;
     }
 }
@@ -55,6 +55,7 @@ dayInput.addEventListener('input', () => {
         createErrorMessage(dayInput, 'Must be a valid day');
     } else {
         removeErrorMessage(dayInput);
+        changeColor([dayInput], [labelForDay], regularColor);
     }
 });
 
@@ -63,6 +64,7 @@ monthInput.addEventListener('input', () => {
         createErrorMessage(monthInput, 'Must be a valid month');
     } else {
         removeErrorMessage(monthInput);
+        changeColor([monthInput], [labelForMonth], regularColor);
     }
 });
 
@@ -71,6 +73,7 @@ yearInput.addEventListener('input', () => {
         createErrorMessage(yearInput, 'Must be in the past');
     } else {
         removeErrorMessage(yearInput);
+        changeColor([yearInput], [labelForYear], regularColor);
     }
 });
 
