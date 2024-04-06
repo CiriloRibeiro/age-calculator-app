@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-    font-family: "Poppins";
+    font-family: "Poppins", sans-serif;
     color: hsl(0, 0%, 8%);
     font-weight: 400;
     width: 90%;
@@ -40,6 +40,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: 10px;
+    padding: 8px;
 }
 
 label {
@@ -65,6 +66,22 @@ input[type="text"] {
     border: 1px solid hsl(0, 0%, 86%);
     padding: 5px;
 }
+
+input[type="text"]:hover {
+    border-color: hsl(259, 100%, 65%);
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+
+.error-message {
+    position: absolute;
+    color: hsl(0, 100%, 67%);
+    font-style: italic;
+    font-size: 9px;
+    margin-top: 4.3rem;
+}
+
 
 .line-with-circle {
     display: flex;
@@ -93,7 +110,16 @@ input[type="text"] {
     right: 140px;
     display: flex;
     justify-content: center;
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
+
+.circle:hover {
+    transition: 0.1s;
+    background: black;
+}
+
 
 @media only screen and (min-width: 500px) {
     .container {
@@ -103,16 +129,34 @@ input[type="text"] {
     .circle {
       right: 0px;
     }
-  }
+
+    .date {
+        justify-content: flex-start;
+    }
+
+    input[type="text"] {
+        width: 120px;
+        padding: 10px;
+        font-size: 1.5rem;
+    }
+
+    .line-with-circle { 
+        margin-bottom: 10px;
+    }
+
+    .error-message {
+        margin-top: 5.1rem;
+    }
+
+}
 
 img {
     max-width: 45%;
 }
 
-
 .response {
     text-align: left;
-    font-size: 3rem;
+    font-size: 3.8rem;
     font-style: italic;
     font-weight: 800;
     padding: 10px 0 10px 0;

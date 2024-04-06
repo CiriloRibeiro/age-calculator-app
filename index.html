@@ -10,6 +10,10 @@
 
   <link rel="stylesheet" href="style.css">
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"
+   integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g=="
+   crossorigin="anonymous" referrerpolicy="no-referrer"> </script>
+
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
     .attribution { font-size: 11px; text-align: center; }
@@ -21,23 +25,25 @@
   <div class="container">
     <div class="date">
       <div class="date-wrapper">
-        <label for="day">Day</label>
+        <label for="day">D A Y</label>
         <input type="text" id="day" placeholder="DD">
       </div>
       <div class="date-wrapper">
-        <label for="month">Month</label>
+        <label for="month">M O N T H</label>
         <input type="text" id="month" placeholder="MM">
       </div>
       <div class="date-wrapper">
-        <label for="year">Year</label>
+        <label for="year">Y E A R</label>
         <input type="text" id="year" placeholder="YYYY">
       </div>
     </div>
 
     <div class="line-with-circle">
-      <div class="line"><div class="circle"><img src="assets/images/icon-arrow.svg" alt=""></div></div>
-
-
+      <div class="line">
+        <button class="circle">
+          <img src="assets/images/icon-arrow.svg" alt="">
+        </button>
+      </div>
     </div>
 
     <div class="response">
@@ -54,5 +60,7 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
